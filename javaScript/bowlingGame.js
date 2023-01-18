@@ -64,12 +64,13 @@ const score = (rolls) =>
    {
     if(framesType[it] === 1)
           {
-            scores[it] = 10 + 
+            let nextThrow = frameScore[it+1]===10?10+frameScore[it+1][0] : frameScore[it][0]+frameScore[it][1]+frameScore[it+1][0]
+            scores[it] = 10 + nextThrow
           }
           else if(framesType[it]===2)
           {
-            let nextThrowScore
-            let frameScore2 = frameScore[it].length===1?frameScore[it][0]:frameScore[it][0]+frameScore[it][1]
+            
+            let frameScore2 = frameScore[it].length===1?frameScore[it+1][0]:frameScore[it+1][0]+frameScore[it+1][1]
             scores[it] = frameScore[it] + frameScore[it][0]
           }
           else if(framesType[it]===3)
@@ -78,7 +79,7 @@ const score = (rolls) =>
           }
    }
    
-   
+   return score
    
 }
 
