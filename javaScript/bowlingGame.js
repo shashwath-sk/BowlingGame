@@ -1,19 +1,14 @@
-
+// changes need to be done
 const IsOfTenFrame = (rolls)=>
 {
-    // let frameDetails = {
-    //     strike:0,
-    //     frame:[0,0],
-    //     score:0
-    // }
     let frameDetails = []
+    let frameScore=0
+    let rollAttempt=0
     rolls.forEach(roll=> {
-        frameScore+=rolls
+        frameScore+=roll
         rollAttempt+=1
         if(rollAttempt===2 || frameScore===10)
         {
-          
-          frame++
           if(rollAttempt===2 && frameScore===10)
           {
             frameDetails.push(2)
@@ -22,7 +17,7 @@ const IsOfTenFrame = (rolls)=>
           {
             frameDetails.push(1)
           }
-          if(rollAttempt===2 && frameScor2<10)
+          if(rollAttempt===2 && frameScore<10)
           {
             frameDetails.push(3)
           }
@@ -43,7 +38,7 @@ const score = (rolls) =>
    let frameScore = []
    let scores = []
 //    let rollAttempt = 0
-   if(frames.length<10)
+   if(framesType.length<10)
    {
     throw new Error('Game should be of ten frames,please continue game to see score');
    }
@@ -52,15 +47,15 @@ const score = (rolls) =>
    {
       if(rolls[it]===10)
       {
-        frameScore[i]=[10]
+        frameScore[it]= new Array(10)
       }
       else{
-            frameScore[i] = [rolls[it],rolls[it+1]]
+            frameScore[it] = new Array(rolls[it],rolls[it+1])
             it+=1
       }
    }
-
-   for(it=0;it<frameScore.length;it++)
+  console.log(frameScore)
+   for(it=0;it<10;it++)
    {
     if(framesType[it] === 1)
           {
@@ -70,8 +65,8 @@ const score = (rolls) =>
           else if(framesType[it]===2)
           {
             
-            let frameScore2 = frameScore[it].length===1?frameScore[it+1][0]:frameScore[it+1][0]+frameScore[it+1][1]
-            scores[it] = frameScore[it] + frameScore[it][0]
+            let frameScore2 = it!==10?0:frameScore[it+1][0]
+            scores[it] = frameScore[it] + frameScore[it][0] + frameScore2
           }
           else if(framesType[it]===3)
           {
@@ -86,7 +81,9 @@ const score = (rolls) =>
    
 }
 
-module.exports = {trackScore};
+console.log(score([6, 4, 3, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0]))
+
+module.exports = {score};
 
 // if(frames[it] === 1)
 //       {
