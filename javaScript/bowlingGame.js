@@ -78,8 +78,11 @@ const score = (rolls) =>
             scores[it] = frameScore[it][0];
           }
    }
-   
-   return score
+   scores.forEach(points=>
+    {
+        score += points
+    })   
+    return score
    
 }
 
